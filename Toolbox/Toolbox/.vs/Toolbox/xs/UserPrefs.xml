@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{75948CFD-D991-482F-B18D-AA57DD1903F8}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controller/HomeController.cs">
+    <Files>
+      <File FileName="Database/DBConnection.cs" Line="91" Column="1" />
+      <File FileName="Program.cs" Line="30" Column="28" />
+      <File FileName="Controller/HomeController.cs" Line="12" Column="26" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Toolbox" expanded="True">
+            <Node name="Toolbox" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Controller" expanded="True">
+                <Node name="HomeController.cs" selected="True" />
+              </Node>
+              <Node name="Database" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Toolbox PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

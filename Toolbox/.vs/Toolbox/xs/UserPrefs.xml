@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{574FAF61-3211-4AC0-9E94-4EB86F17010B}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Toolbox/Program.cs">
+    <Files>
+      <File FileName="Toolbox/Program.cs" Line="10" Column="35" />
+      <File FileName="Toolbox/Controller/DataController.cs" Line="8" Column="10" />
+      <File FileName="Toolbox/Database/DBConnection.cs" Line="51" Column="54" NotebookId="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Toolbox" expanded="True">
+            <Node name="Toolbox" expanded="True">
+              <Node name="Database" expanded="True" />
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Toolbox FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
