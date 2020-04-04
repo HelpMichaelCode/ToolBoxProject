@@ -3,6 +3,8 @@ using System.Data;
 // Connector to the DB 
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
+using Toolbox.Logic;
+
 namespace Toolbox.Database
 {
     public class DBConnection
@@ -58,65 +60,15 @@ namespace Toolbox.Database
             connection.Close();
         }
 
-        
-        
-        private long IMEI;
-        private int thingType;
-        private int TotalPlotsReviewed;
-        private float missing;
-        DateTime lastUpdateTime;
-        private string payload;
-        // fp -> Feed Provider
-        string[] fpOption = { "Automation", "Direct Reveal EU", "Direct Reveal US" };
-        private string feedProvider;
-        // lmr - > Last Message Received
-        string[] lmrOption = { "Message validation failed", "Message Processed", "Message Discarded coming from the past"};
-        private string LastMessagedReceived;
-
-        Random rand = new Random();
-        Guid uuid = Guid.NewGuid();
-        // Method to generate random double values between 0.00 - 100.00
-        public static double GetRandomNumber(double minimum, double maximum)
-        {
-            Random random = new Random();
-            return random.NextDouble() * (maximum - minimum) + minimum;
-        }
         // truncate PlotValidation; -> To delete all the data from the table
-        public void fillTable()
+        public void insertValidationMessage()
         {
-            
             string connstring = string.Format("Server=localhost; database={0}; UID=root; password=Michaelsantos1234; Allow User Variables=True", dbName);
             connection = new MySqlConnection(connstring);
             connection.Open();
 
-            // Generating Values for variables
-            IMEI = rand.Next(1000, 10000) + 1;
-            thingType = rand.Next(1, 10) + 1;
-            TotalPlotsReviewed = rand.Next(1, 20000) + 1;
-            missing = (float)GetRandomNumber(0.00, 100.00);
-            string startDate = "01/03/2020"; 
-            DateTime now = DateTime.Now;
-            DateTime startD = DateTime.Parse(startDate);
-            // Creating a list of time stamp
-            List<DateTime> allDates = new List<DateTime>();
-
-            // Loops from the specified until the date now, and it iterates
-            // based on the day adding one.
-            for (DateTime date = startD; date <= now; date = date.AddDays(1))
-            {
-                // Adding it to the allDates lists
-                allDates.Add(date);
-
-            }
-            // Converting allDates to an array
-            allDates.ToArray();
-
-            lastUpdateTime = allDates[rand.Next(0, allDates.ToArray().Length)].Date.AddSeconds(rand.Next(60 * 60 * 24)); 
+            RandomDataGenerator data = new RandomDataGenerator();
             
-            payload = uuid.ToString();
-            feedProvider = fpOption[rand.Next(0, 3)];
-            LastMessagedReceived = lmrOption[rand.Next(0, 3)];
-
             try
             {
                     string query = "INSERT INTO PlotValidation VALUES (DEFAULT, ?IMEI,?ThingType,?TotalPlotsReviewed,?Missing, " +
@@ -124,24 +76,22 @@ namespace Toolbox.Database
 
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
-                        cmd.Parameters.Add("?IMEI", MySqlDbType.Int64).Value = IMEI;
-                        cmd.Parameters.Add("?ThingType", MySqlDbType.Int32).Value = thingType;
-                        cmd.Parameters.Add("?TotalPlotsReviewed", MySqlDbType.Int32).Value = TotalPlotsReviewed;
-                        cmd.Parameters.Add("?Missing", MySqlDbType.Decimal).Value = missing;
-                        cmd.Parameters.Add("?LastUpdateTime",MySqlDbType.Timestamp).Value = lastUpdateTime;
-                        cmd.Parameters.Add("?PayloadId", MySqlDbType.VarChar).Value = payload;
-                        cmd.Parameters.Add("?FeedProvider", MySqlDbType.VarChar).Value = feedProvider;
-                        cmd.Parameters.Add("?LastMessagedReceived", MySqlDbType.VarChar).Value = LastMessagedReceived;
+                        cmd.Parameters.Add("?IMEI", MySqlDbType.Int64).Value = data.IMEI;
+                        cmd.Parameters.Add("?ThingType", MySqlDbType.Int32).Value = data.thingType;
+                        cmd.Parameters.Add("?TotalPlotsReviewed", MySqlDbType.Int32).Value = data.TotalPlotsReviewed;
+                        cmd.Parameters.Add("?Missing", MySqlDbType.Decimal).Value = data.missing;
+                        cmd.Parameters.Add("?LastUpdateTime", MySqlDbType.Timestamp).Value = data.lastUpdateTime;
+                        cmd.Parameters.Add("?PayloadId", MySqlDbType.VarChar).Value = data.payload;
+                        cmd.Parameters.Add("?FeedProvider", MySqlDbType.VarChar).Value = data.feedProvider;
+                        cmd.Parameters.Add("?LastMessagedReceived", MySqlDbType.VarChar).Value = data.LastMessagedReceived;
                         cmd.ExecuteNonQuery();
-                   
-                }
+                    }
 
                 Close();
                 }
                 catch (MySqlException ex)
                 {
                     Console.WriteLine("Error in adding mysql row. Error: " + ex.Message);
-                    Console.WriteLine("Value ->  " + lastUpdateTime);
                     Console.WriteLine();
                 }
             }
@@ -186,7 +136,6 @@ namespace Toolbox.Database
                 Console.WriteLine("Error in adding mysql row. Error: " + ex.Message);
             }
         }
-        }
-
     }
+}
 

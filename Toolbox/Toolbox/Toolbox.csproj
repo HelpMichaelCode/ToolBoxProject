@@ -7,7 +7,8 @@
 
   <ItemGroup>
     <Folder Include="Database\" />
-    <Folder Include="Controller\" />
+    <Folder Include="Contracts\" />
+    <Folder Include="Logic\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MySql.Data">
@@ -18,6 +19,7 @@
     <PackageReference Include="MySqlConnector" Version="0.62.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controller\DataController.cs" />

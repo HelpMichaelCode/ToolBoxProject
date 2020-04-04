@@ -14,7 +14,7 @@
         "outputPath": "/Users/michaelsantos/Projects/AssignedProject/ToolBoxProject/Toolbox/Toolbox/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/michaelsantos/.config/NuGet/NuGet.Config"
+          "/Users/michaelsantos/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -43,6 +43,10 @@
             "MySqlConnector": {
               "target": "Package",
               "version": "[0.62.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.12.0, )"
             },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",

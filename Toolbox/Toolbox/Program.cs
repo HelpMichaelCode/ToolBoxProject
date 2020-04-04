@@ -1,5 +1,6 @@
 ﻿using System;
 using Toolbox.Database;
+
 namespace Toolbox
 {
     class Program
@@ -24,11 +25,11 @@ namespace Toolbox
 
 
 
-            // Inserts 200 rows into table
-            //for (int i = 0; i < 2000; i++)
-            //{
-            //    dbCob.fillTable();
-            //}
+
+            for (int i = 0; i < 2000; i++)
+            {
+                dbCob.insertValidationMessage();
+            }
 
 
             //int startPoint = 0;
